@@ -24,20 +24,29 @@ const app = () => {
 
     //play sound
     play.addEventListener('click', () => {
-        song.play();
+        checkPlaying(song);
     });
 
 
     // create a function specific to stop and play the sounds
     const checkPlaying = song => {
-        if(song.paused) {
+        if(song.paused) { // if the song is paused then song will play
             song.play();
+            video.play();
             play.src = './svg/pause.svg';
         } else {
-            song.pause();
+            song.pause(); // if its playing then we can pause it
+            video.pause();
             play.src = './svg/play.svg';
         }
+    };
+
+
+    //we can animate the circle in the middle
+    song.ontimeupdate = () => {
+        let currentTime = song.currentTime; // keeps updating when the song plays
     }
+
 
 };
 
